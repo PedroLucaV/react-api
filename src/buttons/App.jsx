@@ -1,18 +1,19 @@
 const Button = ([baseURL, object]) => {
-    const loadData = async () =>{
-        const res = await fetch(`${baseURL}/${object}`)
-        const data = await res.json();
-        return data
+    async function fetchAndDisplayCard() {
+        try {
+            const res = await fetch(`${baseURL}/${object}`);
+            if (!res.ok) {
+                throw new Error('Failed to fetch product');
+            }
+            const produto = await res.json();
+    
+            // Exibir as informações da carta
+            showProductDetal(product);
+        } catch (error) {
+            console.error('Error fetching card:', error);
+        }
     }
-
-    const loadAllWithPromiseAll = async () =>{
-        const [data] = await Promise.all([
-            loadData()
-        ])
-    }
-
-    loadAllWithPromiseAll()
-
+    fetchAndDisplayCard();
     return
 }
 

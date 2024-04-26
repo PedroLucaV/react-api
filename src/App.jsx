@@ -1,6 +1,6 @@
 import Button from "./buttons/App";
 
-const baseURL = 'https://api.magicthegathering.io/v1';
+const baseURL = 'https://ranekapi.origamid.dev/json/api/produto';
 
 const App = () => {
   return(
